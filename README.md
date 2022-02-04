@@ -81,7 +81,7 @@ ca_chain_path =
 ; Example showing that current user references will be expanded:
 ;detection_dir = ~/detections
 ; This is for convenience. SAQ_HOME or other settings can also be used.
-detection_dir = /Users/sean/detections/
+detection_dir = 
 ; Comma sep list pointing to your different splunk rule dirs.
 rule_dirs = hunts/splunk/hippo,hunts/splunk/cat
 ```
