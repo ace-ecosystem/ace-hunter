@@ -11,7 +11,7 @@ Splunk hunts are the only hunts currently supported.
 pip install ace_hunter
 ``` 
 
-You could also git clone this repo and `python3 setup.py install` inside whatever python environment you wish. *NOTE*: I've only tested this in python3.9 but it should work for python>=3.6.
+You could also git clone this repo and `python3 setup.py install` inside whatever python environment you wish. *NOTE*: I've only tested this in python3.9 but it should work for python>=3.7.
 
 
 ## CLI Tool
