@@ -90,6 +90,9 @@ class QueryHunt(Hunt):
         # when the query is loaded from a file this trackes the last time the file was modified
         self.query_last_mtime = None
 
+        # This should be overriden but will default to UTC
+        self.timezone = "UTC"
+
     def execute_query(self, start_time, end_time, *args, **kwargs):
         """Called to execute the query over the time period given by the start_time and end_time parameters.
         Returns a list of zero or more Submission objects."""
@@ -346,7 +349,7 @@ class QueryHunt(Hunt):
         Return None if one cannot be extracted."""
         return None
 
-    def extract_event_timestamp(self, query_result):
+    def extract_event_timestamp(self, query_result, timezone=None):
         """Given a JSON object that represents a single row/entry from a query result, return a datetime.datetime
         object that represents the actual time of the event.
         Return None if one cannot be extracted."""
@@ -382,7 +385,7 @@ class QueryHunt(Hunt):
         # map results to observables
         for event in query_results:
             observable_time = None
-            event_time = self.extract_event_timestamp(event) or local_time()
+            event_time = self.extract_event_timestamp(event, timezone=self.timezone) or local_time()
 
             # pull the observables out of this event
             observables = []
