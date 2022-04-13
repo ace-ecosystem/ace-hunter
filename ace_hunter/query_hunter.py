@@ -19,7 +19,7 @@ from ace_api import Submission
 from ace_hunter import Hunt, open_hunt_db
 from ace_hunter.util import local_time, create_timedelta, abs_path
 
-from ace_hunter.config import CONFIG
+from ace_hunter.config import CONFIG, LOCAL_TIMEZONE
 
 COMMENT_REGEX = re.compile(r"^\s*#.*?$", re.M)
 
@@ -90,8 +90,8 @@ class QueryHunt(Hunt):
         # when the query is loaded from a file this trackes the last time the file was modified
         self.query_last_mtime = None
 
-        # This should be overriden but will default to UTC
-        self.timezone = "UTC"
+        # This should be overriden but will default to LOCAL_TIMEZONE
+        self.timezone = LOCAL_TIMEZONE
 
     def execute_query(self, start_time, end_time, *args, **kwargs):
         """Called to execute the query over the time period given by the start_time and end_time parameters.
